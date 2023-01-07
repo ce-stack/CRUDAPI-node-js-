@@ -1,6 +1,14 @@
-// "Create React App" tooling expects to find the WWW root here,
-// so we simply use this file to import the ./www directory.
-//
-// For the backend, we set the container's entrypoint to src/api/index.js
+const http = require('http');
 
-module.exports = require('./www')
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
